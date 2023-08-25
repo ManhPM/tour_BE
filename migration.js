@@ -104,40 +104,25 @@ async function seed() {
       });
       const couponData = [
         {
-          couponCode: "SUMMBER2023",
-          discountPercentage: 15,
-          validUntil: "2023-09-25",
+          guideName: "Nguyễn Minh Tú",
+          email: "nguyenminhtu@gmail.com",
+          phoneNumber: "0845444999",
+          languages: "Tiếng Anh, Tiếng Pháp"
         },
         {
-          couponCode: "SALE10",
-          discountPercentage: 10,
-          validUntil: "2023-09-25",
+          guideName: "Trần Hoàng Long",
+          email: "tranhoanglong@gmail.com",
+          phoneNumber: "0972777123",
+          languages: "Tiếng Trung, Tiếng Pháp"
         },
         {
-          couponCode: "HOLIDAY20",
-          discountPercentage: 20,
-          validUntil: "2023-09-25",
-        },
-        {
-          couponCode: "FALL25",
-          discountPercentage: 25,
-          validUntil: "2023-09-25",
-        },
-        {
-          couponCode: "WELCOME15",
-          discountPercentage: 15,
-          validUntil: "2023-09-25",
+          guideName: "Trương Phạm Trí Cường",
+          email: "cuongtruong@gmail.com",
+          phoneNumber: "0762151251",
+          languages: "Tiếng Hàn, Tiếng Nhật"
         },
       ];
-      await Coupon.insertMany(couponData);
-    await Guide.createCollection()
-      .then(() => {
-        console.log("Guide collection created");
-      })
-      .catch((err) => {
-        console.error("Error creating Guide collection:", err);
-      });
-
+      await Guide.insertMany(guideData);
     await Itinerary.createCollection()
       .then(() => {
         console.log("Itinerary collection created");
