@@ -28,6 +28,34 @@ async function seed() {
       .catch((err) => {
         console.error("Error creating User collection:", err);
       });
+    const userData = [
+      {
+        username: "user1",
+        email: "phammanhbeo2001@gmail.com",
+        password: "$2a$10$pVN6f.l9WXqsQxifG89kTOewLKmN6BxXjFoqIUra5MIBcc6Z8yhtW",
+        fullName: "Phạm Minh Mạnh",
+        phoneNumber: "0961592551",
+        address: "Quang Trung, Thống Nhất, Đồng Nai",
+      },
+      {
+        username: "user2",
+        email: "ducthinh@gmail.com",
+        password: "$2a$10$pVN6f.l9WXqsQxifG89kTOewLKmN6BxXjFoqIUra5MIBcc6Z8yhtW",
+        fullName: "Nguyễn Đức Thịnh",
+        phoneNumber: "0966666666",
+        address: "Kontum",
+      },
+      {
+        username: "admin",
+        email: "ducthinh@gmail.com",
+        password: "$2a$10$pVN6f.l9WXqsQxifG89kTOewLKmN6BxXjFoqIUra5MIBcc6Z8yhtW",
+        fullName: "Nguyễn Đức Thịnh",
+        phoneNumber: "0966666666",
+        address: "Kontum",
+        role: "admin",
+      },
+    ];
+    await User.insertMany(userData);
 
     await Booking.createCollection()
       .then(() => {
@@ -44,7 +72,29 @@ async function seed() {
       .catch((err) => {
         console.error("Error creating Category collection:", err);
       });
-
+      const categoryData = [
+        {
+          categoryName: "Tour Du lịch",
+          description: "Loại tour này bao gồm các hoạt động mạo hiểm và phiêu lưu như leo núi, đi bộ đường dài, leo tường đá, nhảy dù và trải nghiệm thác nước. Phù hợp cho những người muốn tìm kiếm những trải nghiệm ngoài trời mạo hiểm.",
+        },
+        {
+          categoryName: "Tour Văn Hóa",
+          description: "Loại tour này tập trung vào việc giúp du khách thấm nhuần vào di sản văn hóa, truyền thống của một điểm đến cụ thể. Tour có thể bao gồm viếng thăm các di tích lịch sử, bảo tàng, tham quan chợ địa phương, xem các màn biểu diễn truyền thống và tương tác với cộng đồng địa phương.",
+        },
+        {
+          categoryName: "Tour Biển",
+          description: "Loại tour này cung cấp các tour đến các điểm đến ven biển với những bãi biển đẹp. Du khách có thể tắm nắng, bơi, lặn biển, tham gia các môn thể thao dưới nước và thư giãn cạnh biển. Tour này rất phù hợp cho những người yêu biển và muốn có một kỳ nghỉ thư giãn.",
+        },
+        {
+          categoryName: "Tour Du Lịch Thiên Nhiên",
+          description: "Loại tour này tập trung vào việc khám phá và bảo tồn thiên nhiên hoang dã. Du khách có thể tham gia vào các tour đi săn hoang dã tại các công viên quốc gia hoặc khu bảo tồn để quan sát và tìm hiểu về các loài động vật hoang dã. Có thể bao gồm cả những cuộc đi bộ đường dài và việc quan sát chim.",
+        },
+        {
+          categoryName: "Tour Ẩm Thực và Rượu Vang",
+          description: "Loại tour này xoay quanh trải nghiệm văn hóa ẩm thực, cho du khách thỏa mãn khẩu vị thông qua việc thưởng thức các món ăn địa phương, thăm chợ địa phương, tham gia các lớp học nấu ăn, thưởng thức rượu vang và thăm các trang trại. Đây là loại tour lý tưởng cho những người yêu thích ẩm thực và muốn khám phá các hương vị và truyền thống ẩm thực khác nhau.",
+        },
+      ];
+      await Category.insertMany(categoryData);
     await Coupon.createCollection()
       .then(() => {
         console.log("Coupon collection created");
@@ -52,7 +102,34 @@ async function seed() {
       .catch((err) => {
         console.error("Error creating Coupon collection:", err);
       });
-
+      const couponData = [
+        {
+          couponCode: "SUMMBER2023",
+          discountPercentage: 15,
+          validUntil: "2023-09-25",
+        },
+        {
+          couponCode: "SALE10",
+          discountPercentage: 10,
+          validUntil: "2023-09-25",
+        },
+        {
+          couponCode: "HOLIDAY20",
+          discountPercentage: 20,
+          validUntil: "2023-09-25",
+        },
+        {
+          couponCode: "FALL25",
+          discountPercentage: 25,
+          validUntil: "2023-09-25",
+        },
+        {
+          couponCode: "WELCOME15",
+          discountPercentage: 15,
+          validUntil: "2023-09-25",
+        },
+      ];
+      await Coupon.insertMany(couponData);
     await Guide.createCollection()
       .then(() => {
         console.log("Guide collection created");
@@ -68,7 +145,41 @@ async function seed() {
       .catch((err) => {
         console.error("Error creating Itinerary collection:", err);
       });
-
+      await Category.createCollection()
+      .then(() => {
+        console.log("Category collection created");
+      })
+      .catch((err) => {
+        console.error("Error creating Category collection:", err);
+      });
+      const itineraryData = [
+        {
+          day: 5,
+          activities: "Tham quan danh lam thắng cảnh, leo núi, đi bộ đường dài, tham gia trò chơi mạo hiểm, thăm các ngôi đền và chùa.",
+          meals: "Bữa sáng, bữa trưa, bữa tối",
+        },
+        {
+          day: 3,
+          activities: "Thưởng thức các hoạt động ven biển như bơi, lặn biển, đi thuyền kayak, tắm nắng, tham gia trò chơi trên cát.",
+          meals: "Bữa sáng, bữa trưa",
+        },
+        {
+          day: 7,
+          activities: "Khám phá di tích văn hóa, tham quan bảo tàng, tham gia lễ hội địa phương, tham quan thị trấn cổ, tham gia các lớp học nấu ăn địa phương.",
+          meals: "Bữa sáng, bữa trưa, bữa tối, thử nếm ẩm thực địa phương",
+        },
+        {
+          day: 2,
+          activities: "Khám phá thành phố, tham gia tour đi bộ do hướng dẫn viên, thăm các chợ địa phương, thưởng thức đặc sản và mua sắm hàng lưu niệm.",
+          meals: "Bữa sáng, bữa trưa",
+        },
+        {
+          day: 4,
+          activities: "Tham gia safari quan sát động vật hoang dã, tham gia các cuộc đi bộ ngắm cảnh trong rừng, tham gia buổi tối xem vũ điệu dân gian và thưởng thức nước trái cây tươi ngon.",
+          meals: "Bữa sáng, bữa trưa, bữa tối, BBQ trại lửa",
+        },
+      ];
+      await Itinerary.insertMany(itineraryData);
     await Payment.createCollection()
       .then(() => {
         console.log("Payment collection created");

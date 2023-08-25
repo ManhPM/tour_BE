@@ -30,6 +30,7 @@ const userSchema = new mongoose.Schema(
     },
     photo: {
       type: String,
+      default: "https://res.cloudinary.com/dpgjnngzt/image/upload/v1692954334/anhdaidien_onsafn.jpg"
     },
     role: {
       type: String,
